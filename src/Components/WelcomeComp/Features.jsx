@@ -21,8 +21,8 @@ const Featuresarr = [{
 
 function Features(props) {
     return (
-        <div className="lg:text-center bg-gray-100 p-10">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight mb-5">
+        <div className="lg:text-center bg-gray-100 p-1">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight mb-1">
                 <span className="block">Features</span>
             </h2>
             <div className="inline flex m-4 sm:px-6 lg:py-16 lg:px-8 lg:flex-wrap lg:justify-center">

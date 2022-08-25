@@ -2,6 +2,7 @@ import React,{ Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import Logo from "./../../Assets/Images/Posidoon.png"
+import UseLogout from '../../Composables/useLogout';
 const navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Create Post', href: '/', current: false },
@@ -14,6 +15,14 @@ function classNames(...classes) {
   }
   
 function NavBarv(props) {
+    const handleLogout = async(e) =>{
+      e.preventDefault();
+      const {error , logout} = UseLogout()
+      await logout()
+      if(!error) {
+        window.location.href = '/login'
+      }
+    }
     return (
         <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
@@ -127,7 +136,9 @@ function NavBarv(props) {
                         {({ active }) => (
                             <a
                                 href="/"
-                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                onClick={handleLogout}
+                                >
                                 Sign out
                             </a>
                         )}

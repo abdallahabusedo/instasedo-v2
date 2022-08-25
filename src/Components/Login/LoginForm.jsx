@@ -14,7 +14,7 @@ function LoginForm(props) {
             window.location.href = '/home'
         }
     }
-    return (<form className="mt-2 pl-60 pr-60 mb-20" onSubmit={handleSubmit}>
+    return (<form className="mt-2 pl-32 pr-32 mb-20" onSubmit={handleSubmit}>
                 <div className="flex items-center justify-center  p-5">
                     <img
                         className="h-32 w-auto" 
@@ -23,7 +23,7 @@ function LoginForm(props) {
                     />
                 </div>
                 <div className="max-w-7xl mx-auto  flex items-center justify-center pb-5">
-                    <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight text-indigo-600">Log in Now</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight text-indigo-600">Log in</h1>
                 </div>
                 {Email()}
                 {Password()}
