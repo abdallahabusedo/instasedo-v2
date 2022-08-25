@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Components/Footer/Footer';
 import NavBarv from '../Components/NavBar/NavBarv';
 import Aboutus from '../Components/WelcomeComp/Aboutus';
 import Body from '../Components/WelcomeComp/Body';
@@ -11,6 +12,7 @@ function WelcomePage(props) {
             <Body />
             <Features />
             <Aboutus />
+            <Footer />
         </div>
     );
 }
