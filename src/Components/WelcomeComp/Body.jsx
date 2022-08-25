@@ -15,7 +15,7 @@ function Body(props) {
                             Get started </a>
                         </div>
                         <div className="ml-3 inline-flex rounded-md shadow">
-                            <a href="/signup" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"> 
+                            <a href="/login" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"> 
                             Log In </a>
                         </div>
                     </div>
