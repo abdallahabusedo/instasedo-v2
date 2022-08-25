@@ -108,7 +108,7 @@ function NavBarv(props) {
                     <Menu.Item>
                         {({ active }) => (
                             <a
-                                href="#"
+                                href="/"
                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                                 Your Profile
                             </a>
@@ -117,7 +117,7 @@ function NavBarv(props) {
                     <Menu.Item>
                         {({ active }) => (
                             <a
-                                href="#"
+                                href="/"
                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                                 Settings
                             </a>
@@ -126,7 +126,7 @@ function NavBarv(props) {
                     <Menu.Item>
                         {({ active }) => (
                             <a
-                                href="#"
+                                href="/"
                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                                 Sign out
                             </a>

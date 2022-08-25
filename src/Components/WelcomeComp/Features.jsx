@@ -26,7 +26,7 @@ function Features(props) {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight mb-5">
                 <span className="block">Features</span>
             </h2>
-            <div className="inline flex m-4">
+            <div className="inline flex m-4 sm:px-6 lg:py-16 lg:px-8 lg:flex-wrap lg:justify-center">
                 {Featuresarr.map(feature =>{
                     return <div className="m-2 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 lg:text-center ">
                         <span className="material-icons text-6xl text-white">{feature.logo}</span>

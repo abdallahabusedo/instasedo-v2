@@ -8,7 +8,7 @@ function Aboutus(props) {
                       <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight mb-5">
                         <span className="block">About me </span>
                       </h2>
-                    <img src={myProfile} className="rounded-lg w-64 block ml-auto mr-auto w-1/3 max-w-6xl max-h-6xl" ></img>
+                    <img src={myProfile} className="rounded-lg w-64 block ml-auto mr-auto w-1/3 max-w-6xl max-h-6xl" alt='profile' ></img>
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight mb-10">
                         <span className="block text-indigo-600 mt-5">Abdallah Zaher</span>
                         <span className="block text-indigo-500 text-xl">Software Enginner</span>
