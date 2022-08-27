@@ -139,9 +139,9 @@ function HomePost(props) {
     }]
     return <div className="main-posts">
       {
-        Posts.map(post=>{
+        Posts.map((post, id)=>{
           return<div className="post-box">
-          <img src={post.Image} alt="" />
+          <img src={post.Image} alt="" id={id} />
           <div className="post-info">
             <div className="post-profile">
               <div className="post-img">
@@ -150,11 +150,11 @@ function HomePost(props) {
               <h3>{postpic.Username}</h3>
             </div>
             <div className="likes">
-              <span class="material-icons icon">
+              <span className="material-icons icon">
               favorite_border
               </span>
               <span className="num">{post.likes}</span>
-              <span class="material-icons icon">
+              <span className="material-icons icon">
                 comment
               </span>
               <span className="num">{post.comments}</span>
@@ -210,9 +210,9 @@ function HomePost(props) {
                 <div className="add">+</div>
             </div>
             {
-                Stories.map(story=>{
+                Stories.map((story , id)=>{
                     return <div className="stories-img color">
-                    <img src={story.profilepic} alt="" />
+                    <img src={story.profilepic} alt="" id={id} />
                 </div>
                 })
             }
@@ -273,10 +273,10 @@ function HomePost(props) {
           </div>
         </div>
         <div className="menu mt-10">
-          {Menus.map((tap) => {
+          {Menus.map((tap,id) => {
             return (
-              <a href={tap.goto} className="active">
-                <span className="material-icons icon">{tap.icon}</span>
+              <a href={tap.goto} className="active" id={id}>
+                <span className="material-icons icon" >{tap.icon}</span>
                 {tap.title}
               </a>
             );
