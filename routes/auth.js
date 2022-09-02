@@ -68,7 +68,8 @@ router.post('/login',(req, res)=>{
             if (doMatch) {
                 // create a Token for the User
                 const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
-                res.json({token})
+                const {_id,name,email} = savedUser
+                res.json({token,user:{_id,name,email}})
             }
             // If there are not match
             else{

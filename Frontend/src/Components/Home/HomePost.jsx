@@ -36,7 +36,6 @@ const Menus = [
   },
 ];
 
-
 function HomePost(props) {
   return (
     <div>
@@ -45,182 +44,155 @@ function HomePost(props) {
     </div>
   );
 
-    function Feed() {
-      return <div>
-        <div className="feed">
-            <h1>Feed</h1>
-            <div className="feed-text">
-                <h2>Latest</h2>
-                <span>Popular</span>
-            </div>
-        </div>
-        {Posts()}
-        </div>
-    }
-
-  function Posts() {
-    const Posts = [{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    },{
-      Image:postpic,
-      ProfileImage:postpic,
-      Username:'AbdallahZaher',
-      likes:80,
-      comments:80
-
-    }]
-    return <div className="main-posts">
-      {
-        Posts.map((post, id)=>{
-          return<div className="post-box" key={id}>
-          <img src={post.Image} alt=""  />
-          <div className="post-info">
-            <div className="post-profile">
-              <div className="post-img">
-                <img src={post.ProfileImage} alt="" />
-              </div>
-              <h3>{postpic.Username}</h3>
-            </div>
-            <div className="likes">
-              <span className="material-icons icon">
-              favorite_border
-              </span>
-              <span className="num">{post.likes}</span>
-              <span className="material-icons icon">
-                comment
-              </span>
-              <span className="num">{post.comments}</span>
-            </div>
-          </div>
-        </div>
-        })
-      }
-      
-    </div>;
-  }
-
-  function Stories() {
-    const Stories =[{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },{
-        profilepic:postpic
-    },]
+  function Feed() {
     return (
       <div>
-        <div className="stories-title">
-          <h1>Stories</h1>
-          <a className="btn" href="/home">
-            <span className="material-icons">add_circle_outline</span>
-            <div className="text">Watch all</div>
-          </a>
+        <div className="feed">
+          <h1>Feed</h1>
+          <div className="feed-text">
+            <h2>Latest</h2>
+            <span>Popular</span>
+          </div>
         </div>
-        <div className="stories">
-            <div className="stories-img">
-                <img src={postpic} alt="" />
-                <div className="add">+</div>
-            </div>
-            {
-                Stories.map((story , id)=>{
-                    return <div className="stories-img color"  key={id} >
-                    <img src={story.profilepic} alt=""/>
-                </div>
-                })
-            }
-        </div>
-        {Feed()}
+        {Posts()}
       </div>
     );
   }
+
+  function Posts() {
+    const Posts = [
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+      {
+        Image: postpic,
+        ProfileImage: postpic,
+        Username: "AbdallahZaher",
+        likes: 80,
+        comments: 80,
+      },
+    ];
+    return (
+      <div className="main-posts">
+        {Posts.map((post, id) => {
+          return (
+            <div className="post-box" key={id}>
+              <img src={post.Image} alt="" />
+              <div className="post-info">
+                <div className="post-profile">
+                  <div className="post-img">
+                    <img src={post.ProfileImage} alt="" />
+                  </div>
+                  <h3>{postpic.Username}</h3>
+                </div>
+                <div className="likes">
+                  <span className="material-icons icon">favorite_border</span>
+                  <span className="num">{post.likes}</span>
+                  <span className="material-icons icon">comment</span>
+                  <span className="num">{post.comments}</span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // function Stories() {
+  //   return (
+  //     <div>
+  //       {/* <div className="stories-title">
+  //         <h1>Stories</h1>
+  //         <a className="btn" href="/home">
+  //           <span className="material-icons">add_circle_outline</span>
+  //           <div className="text">Watch all</div>
+  //         </a>
+  //       </div> */}
+  //       <div className="stories">
+  //           {/* <div className="stories-img">
+  //               <img src={postpic} alt="" />
+  //               <div className="add">+</div>
+  //           </div> */}
+  //           {/* {
+  //               Stories.map((story , id)=>{
+  //                   return <div className="stories-img color"  key={id} >
+  //                   <img src={story.profilepic} alt=""/>
+  //               </div>
+  //               })
+  //           } */}
+  //       </div>
+  //       {Feed()}
+  //     </div>
+  //   );
+  // }
 
   function MainHome() {
     return (
@@ -238,7 +210,7 @@ function HomePost(props) {
             </a>
           </div>
         </div>
-        {Stories()}
+        {Feed()}
       </div>
     );
   }
@@ -273,10 +245,10 @@ function HomePost(props) {
           </div>
         </div>
         <div className="menu mt-10">
-          {Menus.map((tap,id) => {
+          {Menus.map((tap, id) => {
             return (
               <a href={tap.goto} className="active" key={id}>
-                <span className="material-icons icon" >{tap.icon}</span>
+                <span className="material-icons icon">{tap.icon}</span>
                 {tap.title}
               </a>
             );
