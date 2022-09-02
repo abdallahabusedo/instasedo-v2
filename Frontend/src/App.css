@@ -3,6 +3,12 @@
   margin: 0;
   padding: 0;
 }
+
+#toast-container{
+  top:30px !important;
+  right: 20px !important;
+  left: auto !important;
+}
 /* .App {
   text-align: center;
 }

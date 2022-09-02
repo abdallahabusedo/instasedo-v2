@@ -6,11 +6,13 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require('../keys')
 const requireLogin = require('../middleware/requireLogin')
+var cors = require('cors')
+
+
 
 router.get('/protected',requireLogin, (req,res) => {
     res.send("hello User")
 })
-
 
 // Sign up endpoint
 router.post('/signup',(req,res)=>{
@@ -18,17 +20,14 @@ router.post('/signup',(req,res)=>{
     const {name,email,password} = req.body
 
     // Check if there any empty fields
-    if(!email || !password ||!name) {
+    if(!email || !password ||!name) 
         // if there an empty fields send an error
-       return res.status(422).json({error: 'Please enter all fields'})
-    }
-
+       return res.status(422).json({error: 'Please enter all fields'}) 
     // Check if the email is already exists
     User.findOne({email: email}).then((savedUser)=>{
-        if(savedUser){
+        if(savedUser)
             // if the user email is already in the database send an error
-            return res.status(422).json({error: 'User already exists with that email'})
-        }
+            return res.status(422).json({error: 'User already exists with that email'})   
         // Encrypt the Password For Security
         bcrypt.hash(password,12)
         .then((hashedPassword)=>{
@@ -40,16 +39,11 @@ router.post('/signup',(req,res)=>{
             })
             // Save the User to mongodb
             user.save()
-            .then((user)=>{
-                res.json({message:"Successfully signed up"})
-            }).catch((err)=>{
-                console.log(err);
-            })
+            .then((user)=>res.json({message:"Successfully signed up"}))
+            .catch((err)=>console.log(err))
         })
     })
-    .catch((err)=>{
-        console.log(err);
-    })
+    .catch((err)=>console.log(err))
 })
 
 // Login endpoint

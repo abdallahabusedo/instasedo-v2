@@ -25,7 +25,7 @@ const Menus = [
     title: "Messages",
   },
   {
-    goto: "/home",
+    goto: "/profile",
     icon: "account_circle",
     title: "Profile",
   },
@@ -232,7 +232,7 @@ function HomePost(props) {
           </div>
           <div className="header-content">
             <span className="material-icons">notifications</span>
-            <a href="/home" className="btn">
+            <a href="/createPost" className="btn">
               <span className="material-icons">add_circle_outline</span>
               <div className="btn-text">Add Photo</div>
             </a>

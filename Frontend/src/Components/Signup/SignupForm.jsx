@@ -1,50 +1,46 @@
 import React, { useState } from 'react';
-import UseCollection from '../../Composables/useCollection';
-import UseSignup from '../../Composables/useSignup';
 import Logo from "./../../Assets/Images/Posidoonb.png"
+import M from "materialize-css"
+import { useNavigate } from "react-router-dom";
 
+let axios = require('axios');
 function SignupForm(props) {
-    const [_Email, _setEmail] = useState()
-    const [_Password, _setPassword] = useState()
     const [_ConfiermPassword, _setConfiermPassword] = useState()
     const [_Fname, _setFname] = useState()
     const [_Lname, _setLname] = useState()
-    const [_Username, _setUsername] = useState()
     const [_Gender, _setGender] = useState()
     const [_ProfilePic, _setProfilePic] = useState([])
+    
+    const [_Email, _setEmail] = useState("")
+    const [_Password, _setPassword] = useState("")
+    const [_Username, _setUsername] = useState("")
 
-   const handleSubmit = async (e) =>{
-        e.preventDefault();
-        console.log("_Email",_Email);
-        console.log("_Password",_Password);
-        console.log("_ConfiermPassword",_ConfiermPassword);
-        console.log("_Fname",_Fname);
-        console.log("_Lname",_Lname);
-        console.log("_Username",_Username);
-        console.log("_Gender",_Gender);
-        console.log("_ProfilePic",_ProfilePic);
-        
-        const {error , signup} = UseSignup()
-        await signup(_Email,_Password,_Username,_ProfilePic)
-        const {er, addDoce} = UseCollection("Users")
-        console.log(_ProfilePic);
-        if (!error) {
-            const userInfo ={
-                email: _Email,
-                fname: _Fname,
-                lname: _Lname,
-                username: _Username,
-                gender: _Gender,
+    let navigate = useNavigate();
+    const PostData =  (e) =>{
+            e.preventDefault();
+            if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(_Email)){
+                M.toast({html: "Invalid Email",classes:"#f44336 red"})
+                return
             }
-            await addDoce(userInfo)
-            if (!er) {
-                //window.location.href ='/home'
-            }
+            // send sign up request
+            axios.post('http://localhost:5000/signup',{
+                "name": _Username,
+                "email": _Email,
+                "password": _Password
+                })
+            .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            M.toast({html: response.data.message,classes:"#f44336 green"})
+            navigate('/login')
+            })
+            .catch(function (error) {
+            console.log(error.response.data.error);
+            M.toast({html: error.response.data.error,classes:"#f44336 red"})
+            });
         }
-    }
 
     return (
-        <form className="mt-2 pl-52 pr-52 mb-20" onSubmit={handleSubmit}> 
+        <form className="mt-2 pl-52 pr-52 mb-20"> 
                 <div className="flex items-center justify-center  p-5">
                 <img
                     className="h-32 w-auto" 
@@ -55,19 +51,21 @@ function SignupForm(props) {
             <div className="max-w-7xl mx-auto  flex items-center justify-center pb-5">
                 <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight text-indigo-600">Sign Up Now</h1>
             </div>
-            {ProfilePic()}
+            {/* {ProfilePic()} */}
             {Email()}
             {Password()}
-            {ConfiermPassword()}
+            {/* {ConfiermPassword()} */}
             <div className="grid md:grid-cols-2 md:gap-6">
-                {Fname()}
-                {Lname()}
+                {/* {Fname()} */}
+                {/* {Lname()} */}
             </div>
             <div className="grid md:grid-cols-2 md:gap-6">
                 {Username()}
-                {Gender()}
+                {/* {Gender()} */}
             </div>
-            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            <button 
+            onClick={(e)=>PostData(e)}
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             <a href='/login' className='block flex align-center justify-center font-bold text-2xl'> I have an Account 🤞</a>
         </form>
     );
@@ -104,8 +102,8 @@ function SignupForm(props) {
             <label htmlFor="Email" className="block mb-2 text-lg font-large text-gray-900 dark:text-gray-1000 font-bold">Username</label>
             <input 
                 type="text" 
-                id="Email" 
-                className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                id="Email"
+                className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                 placeholder='Username' 
                 onChange={e => _setUsername(e.target.value)}
                 />
@@ -193,7 +191,7 @@ function SignupForm(props) {
             <input 
                 type="text" 
                 id="Password" 
-                className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                 placeholder='Password'
                 onChange={e => _setPassword(e.target.value)}
                 />
@@ -206,8 +204,8 @@ function SignupForm(props) {
             <input 
                 type="text" 
                 id="Email" 
-                className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                placeholder='example@example.com' 
+                className="block text-black p-4 w-full bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                placeholder='example@example.com'
                 onChange={e=> _setEmail(e.target.value)}
                 />
         </div>;
