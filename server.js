@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 5000; // port number
 const mongoose = require("mongoose");
-var cors = require("cors");
-
+const cors = require("cors");
 // Connect to the MONGODB_URL
 const { MONGODB_URL } = require("./keys");
 
@@ -26,6 +25,7 @@ app.use(
     extended: true,
   })
 );
+app.use("/uploads",express.static("uploads"))
 app.use(
   cors({
     origin: "*",
