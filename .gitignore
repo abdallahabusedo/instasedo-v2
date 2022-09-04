@@ -2,13 +2,13 @@
 
 # dependencies
 /Frontend/node_modules
-/node_modules
+node_modules
 /.pnp
 .pnp.js
-key.js
+keys.js
 # testing
 /coverage
-
+/uploads
 # production
 /build
 
