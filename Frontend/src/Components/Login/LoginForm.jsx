@@ -27,6 +27,7 @@ function LoginForm(props) {
       })
       .then(function (response) {
         console.log(response.data);
+        localStorage.setItem("Token",response.data.token);
         M.toast({ html: "Signed in successfully", classes: "#f44336 green" });
         navigate("/home");
       })

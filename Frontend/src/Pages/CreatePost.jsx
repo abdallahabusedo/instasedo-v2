@@ -10,14 +10,9 @@ function CreatePost(props) {
     const [_Image, _setImage] = useState()
     const PostNewPost = (e)=>{
         e.preventDefault();
-        const data = new FormData()
-        data.append("file",_Image)
-        data.append("upload_preset","instasedo")
-        data.append("cloud_name","posidoon")
-        console.log("data", data);
-        axios.post("http://localhost:5000/createphoto",data)
-        .then(res=>console.log(res))
-        .catch(err=>console.log(err))
+        // TODO: upload image
+        
+        // TODO: Take the name of the image and out it in the post req
     }
     return (
         <div>

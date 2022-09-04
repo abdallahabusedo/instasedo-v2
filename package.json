@@ -29,6 +29,7 @@
     "mongoose": "^6.5.4",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^2.0.19",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   }

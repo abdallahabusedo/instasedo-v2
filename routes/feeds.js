@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const requireLogin = require('./../middleware/requireLogin')
 const Post = mongoose.model('Post')
+const multer = require("multer");
 
 
 router.get('/allposts' ,(req, res)=>{
@@ -37,5 +38,25 @@ router.get("/myposts",requireLogin,(req,res)=>{
         res.json({myPosts})
     }).catch(err=>{console.log(err)});
 })
+ // TODO add accepts some file line png jpg 
+const multrtStorage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null,'uploads')
+    },
+    filename: (req, file, cb) =>{
+        const ext = file.mimetype.split('/')[1];
+        cb(null , file.fieldname+Date.now()+'.'+ext)
+    }
+})
+
+const upload = multer({
+    storage: multrtStorage
+})
+
+router.post("/uploadImage", requireLogin , upload.single('image'), (req, res) =>{
+    // TODO check if the upload is already uploaded or give null image
+    res.send(req.file.path)
+})
+
 
 module.exports= router
