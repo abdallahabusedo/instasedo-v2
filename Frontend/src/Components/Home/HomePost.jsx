@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import postpic from "./../../Assets/Images/myProfile.jpg";
 import logo from "./../../Assets/Images/Posidoonb.png";
 import "./style.css";
@@ -37,6 +38,17 @@ const Menus = [
 ];
 
 function HomePost(props) {
+  let [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/allposts")
+      .then((data) => {
+        setPosts(data.data.posts);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div>
       {Sidebar()}
@@ -60,7 +72,7 @@ function HomePost(props) {
   }
 
   function Posts() {
-    const Posts = [
+    /*const Posts = [
       {
         Image: postpic,
         ProfileImage: postpic,
@@ -138,25 +150,35 @@ function HomePost(props) {
         likes: 80,
         comments: 80,
       },
-    ];
+    ];*/
     return (
-      <div className="main-posts">
-        {Posts.map((post, id) => {
+      <div className="grid lg:grid-cols-3 gap-10 w-full ">
+        {posts.map((post, id) => {
+          console.log(
+            "post =: ",
+            "http://localhost:5000/" + post.pic.replace(/\\/g, "/")
+          );
           return (
-            <div className="post-box" key={id}>
-              <img src={post.Image} alt="" />
-              <div className="post-info">
-                <div className="post-profile">
-                  <div className="post-img">
+            <div className="grid-wrapper" key={id}>
+              <div className="wapper-div">
+                <img
+                  src={"http://localhost:5000/" + post.pic.replace(/\\/g, "/")}
+                  alt=""
+                />
+                <div className="post-info">
+                  <div className="post-profile">
+                    {/* <div className="post-img">
                     <img src={post.ProfileImage} alt="" />
+                  </div> */}
+                    <h3>{post.title}</h3>
+                    <h3>{post.PostedBy.name}</h3>
                   </div>
-                  <h3>{postpic.Username}</h3>
-                </div>
-                <div className="likes">
-                  <span className="material-icons icon">favorite_border</span>
-                  <span className="num">{post.likes}</span>
-                  <span className="material-icons icon">comment</span>
-                  <span className="num">{post.comments}</span>
+                  <div className="likes">
+                    <span className="material-icons icon">favorite_border</span>
+                    {/* <span className="num">{post.likes}</span> */}
+                    <span className="material-icons icon">comment</span>
+                    {/* <span className="num">{post.comments}</span> */}
+                  </div>
                 </div>
               </div>
             </div>

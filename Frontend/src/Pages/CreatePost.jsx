@@ -12,7 +12,6 @@ function CreatePost(props) {
     let formdata = new FormData();
     formdata.append("image", image);
     let token = localStorage.getItem("token");
-    console.log("asd",_Body,_Title);
     // TODO: upload image
     try {
       const uploadImageReq = await axios.post(
@@ -26,21 +25,24 @@ function CreatePost(props) {
         }
       );
       // TODO: Take the name of the image and out it in the post req
-      const sendPost = await axios.post("http://localhost:5000/createpost",{
-        title: _Title,
-        body: _Body,
-        pic: uploadImageReq.data,
-      },{
-        headers: {
+      const sendPost = await axios.post(
+        "http://localhost:5000/createpost",
+        {
+          title: _Title,
+          body: _Body,
+          pic: uploadImageReq.data,
+        },
+        {
+          headers: {
             Authorization: token,
           },
-      })
+        }
+      );
       console.log(sendPost);
+      window.location = "/home";
     } catch (error) {
       console.log(error);
     }
-
-
   };
   return (
     <div>
@@ -58,9 +60,7 @@ function CreatePost(props) {
         </div>
         <form className="flex flex-col max-w-2xl justify-center my-0 mx-auto ">
           {/* Title */}
-          <label
-            className="block text-lg font-large text-gray-900 dark:text-gray-1000 font-bold mb-5"
-            >
+          <label className="block text-lg font-large text-gray-900 dark:text-gray-1000 font-bold mb-5">
             Title
           </label>
           <input
@@ -70,9 +70,7 @@ function CreatePost(props) {
           />
 
           {/* Body */}
-          <label
-            className="block mb-2 text-lg font-large text-gray-900 dark:text-gray-1000 font-bold mt-5"
-            >
+          <label className="block mb-2 text-lg font-large text-gray-900 dark:text-gray-1000 font-bold mt-5">
             Discription
           </label>
           <input
