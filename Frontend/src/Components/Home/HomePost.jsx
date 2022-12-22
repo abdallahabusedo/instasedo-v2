@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import postpic from "./../../Assets/Images/myProfile.jpg";
 import logo from "./../../Assets/Images/Posidoonb.png";
 import "./style.css";
@@ -49,6 +50,9 @@ function HomePost(props) {
         console.log(err);
       });
   }, []);
+  // if (!props.user) {
+  //   return <Navigate to="/login" replace />;
+  // }
   return (
     <div>
       {Sidebar()}
@@ -72,92 +76,9 @@ function HomePost(props) {
   }
 
   function Posts() {
-    /*const Posts = [
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-      {
-        Image: postpic,
-        ProfileImage: postpic,
-        Username: "AbdallahZaher",
-        likes: 80,
-        comments: 80,
-      },
-    ];*/
     return (
       <div className="grid lg:grid-cols-3 gap-10 w-full ">
         {posts.map((post, id) => {
-          console.log(
-            "post =: ",
-            "http://localhost:5000/" + post.pic.replace(/\\/g, "/")
-          );
           return (
             <div className="grid-wrapper" key={id}>
               <div className="wapper-div">
@@ -187,34 +108,6 @@ function HomePost(props) {
       </div>
     );
   }
-
-  // function Stories() {
-  //   return (
-  //     <div>
-  //       {/* <div className="stories-title">
-  //         <h1>Stories</h1>
-  //         <a className="btn" href="/home">
-  //           <span className="material-icons">add_circle_outline</span>
-  //           <div className="text">Watch all</div>
-  //         </a>
-  //       </div> */}
-  //       <div className="stories">
-  //           {/* <div className="stories-img">
-  //               <img src={postpic} alt="" />
-  //               <div className="add">+</div>
-  //           </div> */}
-  //           {/* {
-  //               Stories.map((story , id)=>{
-  //                   return <div className="stories-img color"  key={id} >
-  //                   <img src={story.profilepic} alt=""/>
-  //               </div>
-  //               })
-  //           } */}
-  //       </div>
-  //       {Feed()}
-  //     </div>
-  //   );
-  // }
 
   function MainHome() {
     return (

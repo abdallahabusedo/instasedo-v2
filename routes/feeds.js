@@ -10,6 +10,7 @@ router.get("/allposts", (req, res) => {
     .populate("PostedBy", "_id name")
     .then((posts) => {
       res.json({ posts });
+      console.log(posts);
     })
     .catch((err) => {
       console.log(err);

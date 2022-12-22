@@ -1,11 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
-
 let axios = require("axios");
 
 function CreatePost(props) {
   const [_Title, _setTitle] = useState("");
   const [_Body, _setBody] = useState("");
+
   const PostNewPost = async (e) => {
     e.preventDefault();
     let image = document.getElementById("uploadImage").files[0];

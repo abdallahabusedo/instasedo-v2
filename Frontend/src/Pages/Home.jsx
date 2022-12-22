@@ -3,7 +3,7 @@ import HomePost from '../Components/Home/HomePost';
 function Home(props) {
     return (
         <div>
-            <HomePost />
+            <HomePost user={props.user} />
         </div>
     );
 }
